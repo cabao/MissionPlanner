@@ -12,7 +12,7 @@ Changelog : https://github.com/ArduPilot/MissionPlanner/blob/master/ChangeLog.tx
 
 License : https://github.com/ArduPilot/MissionPlanner/blob/master/COPYING.txt  
 
-Test Branch..
+Test Branch...
 
 ## How to compile
 
