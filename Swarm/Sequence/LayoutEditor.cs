@@ -30,6 +30,7 @@ namespace MissionPlanner.Swarm.Sequence
         private NumericUpDown num_drones;
         private Button but_takeoff;
         private Button but_setimage;
+        private Button button1;
         private Grid grid;
 
         public LayoutEditor()
@@ -68,6 +69,7 @@ namespace MissionPlanner.Swarm.Sequence
             this.num_drones = new System.Windows.Forms.NumericUpDown();
             this.but_takeoff = new System.Windows.Forms.Button();
             this.but_setimage = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.layoutsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stepsBindingSource)).BeginInit();
@@ -76,8 +78,8 @@ namespace MissionPlanner.Swarm.Sequence
             // 
             // grid
             // 
-            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grid.Location = new System.Drawing.Point(12, 52);
             this.grid.Name = "grid";
@@ -94,7 +96,7 @@ namespace MissionPlanner.Swarm.Sequence
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(93, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -142,13 +144,14 @@ namespace MissionPlanner.Swarm.Sequence
             // listBox1
             // 
             this.listBox1.AllowDrop = true;
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.DataSource = this.stepsBindingSource;
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(744, 52);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(143, 433);
+            this.listBox1.Size = new System.Drawing.Size(143, 424);
             this.listBox1.TabIndex = 6;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBox1_DragDrop);
@@ -187,7 +190,7 @@ namespace MissionPlanner.Swarm.Sequence
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(691, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(33, 12);
             this.label1.TabIndex = 9;
             this.label1.Text = "label1";
             // 
@@ -215,7 +218,7 @@ namespace MissionPlanner.Swarm.Sequence
             0,
             0});
             this.num_drones.Name = "num_drones";
-            this.num_drones.Size = new System.Drawing.Size(75, 20);
+            this.num_drones.Size = new System.Drawing.Size(75, 22);
             this.num_drones.TabIndex = 11;
             this.num_drones.Value = new decimal(new int[] {
             1,
@@ -244,9 +247,20 @@ namespace MissionPlanner.Swarm.Sequence
             this.but_setimage.UseVisualStyleBackColor = true;
             this.but_setimage.Click += new System.EventHandler(this.but_setimage_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(771, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Land";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.but_land_Click);
+            // 
             // LayoutEditor
             // 
             this.ClientSize = new System.Drawing.Size(899, 494);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.but_setimage);
             this.Controls.Add(this.but_takeoff);
             this.Controls.Add(this.num_drones);
@@ -262,6 +276,7 @@ namespace MissionPlanner.Swarm.Sequence
             this.Controls.Add(this.grid);
             this.Name = "LayoutEditor";
             this.Text = "Layout Editor";
+            this.Load += new System.EventHandler(this.LayoutEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stepsBindingSource)).EndInit();
@@ -511,7 +526,6 @@ namespace MissionPlanner.Swarm.Sequence
         {
             controller.Stop();
             controller.Start();
-
             Parallel.ForEach(controller.DG.Drones, a =>
             {
                 if (!a.MavState.cs.mode.ToLower().Equals("guided"))
@@ -544,6 +558,23 @@ namespace MissionPlanner.Swarm.Sequence
                         a.MavState.cs.armed, a.MavState.cs.alt);
                 });
         }
+
+
+
+        private void but_land_Click(object sender, EventArgs e)
+        {
+            controller.Stop();
+            controller.Start();
+            Parallel.ForEach(controller.DG.Drones, a =>
+            {
+                //if (!a.MavState.cs.mode.ToLower().Equals("guided"))
+                a.MavState.parent.setMode(a.MavState.sysid, a.MavState.compid, "LAND");
+                Console.WriteLine("Guided Mode: {0} - {1} {2} {3}", a.MavState.sysid, a.MavState.cs.mode,
+                    a.MavState.cs.armed, a.MavState.cs.alt);
+            });
+
+        }
+
 
         private void but_mission_Click(object sender, EventArgs e)
         {
@@ -696,5 +727,12 @@ namespace MissionPlanner.Swarm.Sequence
                 }
             }
         }
+
+        private void LayoutEditor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
