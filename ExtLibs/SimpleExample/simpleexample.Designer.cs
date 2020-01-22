@@ -40,9 +40,9 @@
             // CMB_comport
             // 
             this.CMB_comport.FormattingEnabled = true;
-            this.CMB_comport.Location = new System.Drawing.Point(13, 13);
+            this.CMB_comport.Location = new System.Drawing.Point(13, 12);
             this.CMB_comport.Name = "CMB_comport";
-            this.CMB_comport.Size = new System.Drawing.Size(121, 21);
+            this.CMB_comport.Size = new System.Drawing.Size(121, 20);
             this.CMB_comport.TabIndex = 0;
             this.CMB_comport.Click += new System.EventHandler(this.CMB_comport_Click);
             // 
@@ -57,16 +57,16 @@
             "38400",
             "57600",
             "115200"});
-            this.cmb_baudrate.Location = new System.Drawing.Point(140, 12);
+            this.cmb_baudrate.Location = new System.Drawing.Point(140, 11);
             this.cmb_baudrate.Name = "cmb_baudrate";
-            this.cmb_baudrate.Size = new System.Drawing.Size(121, 21);
+            this.cmb_baudrate.Size = new System.Drawing.Size(121, 20);
             this.cmb_baudrate.TabIndex = 1;
             // 
             // but_connect
             // 
-            this.but_connect.Location = new System.Drawing.Point(268, 12);
+            this.but_connect.Location = new System.Drawing.Point(268, 11);
             this.but_connect.Name = "but_connect";
-            this.but_connect.Size = new System.Drawing.Size(75, 23);
+            this.but_connect.Size = new System.Drawing.Size(75, 21);
             this.but_connect.TabIndex = 2;
             this.but_connect.Text = "Connect";
             this.but_connect.UseVisualStyleBackColor = true;
@@ -74,9 +74,9 @@
             // 
             // but_armdisarm
             // 
-            this.but_armdisarm.Location = new System.Drawing.Point(452, 12);
+            this.but_armdisarm.Location = new System.Drawing.Point(452, 11);
             this.but_armdisarm.Name = "but_armdisarm";
-            this.but_armdisarm.Size = new System.Drawing.Size(75, 23);
+            this.but_armdisarm.Size = new System.Drawing.Size(75, 21);
             this.but_armdisarm.TabIndex = 3;
             this.but_armdisarm.Text = "Arm/Disarm";
             this.but_armdisarm.UseVisualStyleBackColor = true;
@@ -84,9 +84,9 @@
             // 
             // but_mission
             // 
-            this.but_mission.Location = new System.Drawing.Point(349, 12);
+            this.but_mission.Location = new System.Drawing.Point(349, 11);
             this.but_mission.Name = "but_mission";
-            this.but_mission.Size = new System.Drawing.Size(97, 23);
+            this.but_mission.Size = new System.Drawing.Size(97, 21);
             this.but_mission.TabIndex = 4;
             this.but_mission.Text = "Send Mission";
             this.but_mission.UseVisualStyleBackColor = true;
@@ -94,16 +94,17 @@
             // 
             // simpleexample
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 62);
+            this.ClientSize = new System.Drawing.Size(547, 57);
             this.Controls.Add(this.but_mission);
             this.Controls.Add(this.but_armdisarm);
             this.Controls.Add(this.but_connect);
             this.Controls.Add(this.cmb_baudrate);
             this.Controls.Add(this.CMB_comport);
             this.Name = "simpleexample";
-            this.Text = "Form1";
+            this.Text = "Test Link";
+            this.Load += new System.EventHandler(this.simpleexample_Load);
             this.ResumeLayout(false);
 
         }

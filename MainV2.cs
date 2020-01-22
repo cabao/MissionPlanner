@@ -1063,7 +1063,8 @@ namespace MissionPlanner
             {
                 this.Icon = Icon.FromHandle(((Bitmap)Program.IconFile).GetHicon());
             }
-            MenuArduPilot.Image = new Bitmap(Properties.Resources._3logo, (int)(300), 40);
+            // Llama.
+            MenuArduPilot.Image = new Bitmap(Properties.Resources._3logo, (int)(300), 45);
             MenuArduPilot.Width = MenuArduPilot.Image.Width;
 
             //MenuArduPilot.Image = new Bitmap(Properties.Resources._0d92fed790a3a70170e61a86db103f399a595c70, (int)(200), 31);

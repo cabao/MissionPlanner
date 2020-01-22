@@ -254,5 +254,10 @@ namespace SimpleExample
                 serialPort1.Write(packet, 0, packet.Length);
             }
         }
+
+        private void simpleexample_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

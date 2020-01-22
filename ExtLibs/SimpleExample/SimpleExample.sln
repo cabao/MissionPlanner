@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExample", "SimpleExample.csproj", "{92360E56-A293-436C-8A29-0D0C37AF50A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAVLink", "..\Mavlink\MAVLink.csproj", "{20296734-5F3C-4593-A0D5-DD20B440B13A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAVLink", "..\Mavlink\MAVLink.csproj", "{20296734-5F3C-4593-A0D5-DD20B440B13A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {868EB55E-523D-4A2C-8D28-FF70EED288F1}
 	EndGlobalSection
 EndGlobal
